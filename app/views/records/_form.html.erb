@@ -1,0 +1,57 @@
+<%= form_for(@record) do |f| %>
+  <% if @record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% @record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :event %><br>
+    <%= f.text_area :event %>
+  </div>
+  <div class="field">
+    <%= f.label :thought_about_event %><br>
+    <%= f.text_area :thought_about_event %>
+  </div>
+  <div class="field">
+    <%= f.label :feeling_about_thought %><br>
+    <%= f.text_area :feeling_about_thought %>
+  </div>
+  <div class="field">
+    <%= f.label :unhealthy_action %><br>
+    <%= f.text_area :unhealthy_action %>
+  </div>
+  <div class="field">
+    <%= f.label :unhealthy_action %><br>
+    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :healthy_action %><br>
+    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :reframe_statement %><br>
+    <%= f.text_area :reframe_statement %>
+  </div>
+  <div class="field">
+    <%= f.label :healthy_action %><br>
+    <%= f.text_area :healthy_action %>
+  </div>
+  <div class="field">
+    <%= f.label :star %><br>
+    <%= f.check_box :star %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

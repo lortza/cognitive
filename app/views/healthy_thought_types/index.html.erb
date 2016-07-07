@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Healthy Thought Types</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Explanation</th>
+      <th>Example</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @healthy_thought_types.each do |healthy_thought_type| %>
+      <tr>
+        <td><%= healthy_thought_type.name %></td>
+        <td><%= healthy_thought_type.explanation %></td>
+        <td><%= healthy_thought_type.example %></td>
+        <td><%= link_to 'Show', healthy_thought_type %></td>
+        <td><%= link_to 'Edit', edit_healthy_thought_type_path(healthy_thought_type) %></td>
+        <td><%= link_to 'Destroy', healthy_thought_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Healthy thought type', new_healthy_thought_type_path %>

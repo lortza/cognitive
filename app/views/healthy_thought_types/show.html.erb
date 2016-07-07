@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @healthy_thought_type.name %>
+</p>
+
+<p>
+  <strong>Explanation:</strong>
+  <%= @healthy_thought_type.explanation %>
+</p>
+
+<p>
+  <strong>Example:</strong>
+  <%= @healthy_thought_type.example %>
+</p>
+
+<%= link_to 'Edit', edit_healthy_thought_type_path(@healthy_thought_type) %> |
+<%= link_to 'Back', healthy_thought_types_path %>

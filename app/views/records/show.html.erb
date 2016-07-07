@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @record.date %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @record.event %>
+</p>
+
+<p>
+  <strong>Thought about event:</strong>
+  <%= @record.thought_about_event %>
+</p>
+
+<p>
+  <strong>Feeling about thought:</strong>
+  <%= @record.feeling_about_thought %>
+</p>
+
+<p>
+  <strong>Unhealthy action:</strong>
+  <%= @record.unhealthy_action %>
+</p>
+
+<p>
+  <strong>Unhealthy thought type:</strong>
+  <%= @record.unhealthy_thought_type %>
+</p>
+
+<p>
+  <strong>Healthy thought type:</strong>
+  <%= @record.healthy_thought_type %>
+</p>
+
+<p>
+  <strong>Reframe statement:</strong>
+  <%= @record.reframe_statement %>
+</p>
+
+<p>
+  <strong>Healthy action:</strong>
+  <%= @record.healthy_action %>
+</p>
+
+<p>
+  <strong>Star:</strong>
+  <%= @record.star %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>
