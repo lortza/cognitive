@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<h1>Remapping Record Details</h1>
+<h2><%= truncate(@record.event, length: 50) %></h2>
 
 <p>
   <strong>Date:</strong>
@@ -27,12 +29,12 @@
 
 <p>
   <strong>Unhealthy thought type:</strong>
-  <%= @record.unhealthy_thought_type %>
+  <%= @record.unhealthy_thought_type.name %> (<%= @record.unhealthy_thought_type.explanation %>)
 </p>
 
 <p>
   <strong>Healthy thought type:</strong>
-  <%= @record.healthy_thought_type %>
+  <%= @record.healthy_thought_type.name %> (<%= @record.healthy_thought_type.explanation %>)
 </p>
 
 <p>

@@ -17,34 +17,42 @@
   </div>
   <div class="field">
     <%= f.label :event %><br>
+    Describe the event that triggered your feelings.<br>
     <%= f.text_area :event %>
   </div>
   <div class="field">
     <%= f.label :thought_about_event %><br>
+    What did you think about this event?</br>
     <%= f.text_area :thought_about_event %>
   </div>
   <div class="field">
     <%= f.label :feeling_about_thought %><br>
+    What feelings were triggered by that thought?<br>
     <%= f.text_area :feeling_about_thought %>
   </div>
   <div class="field">
     <%= f.label :unhealthy_action %><br>
+    What actions did these feelings inspire you to take?<br>
     <%= f.text_area :unhealthy_action %>
   </div>
   <div class="field">
-    <%= f.label :unhealthy_action %><br>
-    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :name %>
+    <%= f.label :unhealthy_thought_type %><br>
+    Which of these usual storylines best fits this situation?<br>
+    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :name, { :prompt => '-- Select --' } %>
   </div>
   <div class="field">
-    <%= f.label :healthy_action %><br>
-    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :name %>
+    <%= f.label :healthy_thought_type %><br>
+    Which healthy thought type is more appropriate for this situation?<br>
+    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :name, { :prompt => '-- Select --' } %>
   </div>
   <div class="field">
     <%= f.label :reframe_statement %><br>
+    Using your healthy thought type, write a more accurate statement describing the situation.<br>
     <%= f.text_area :reframe_statement %>
   </div>
   <div class="field">
     <%= f.label :healthy_action %><br>
+    What actions does this new statement inspire you to make?<br>
     <%= f.text_area :healthy_action %>
   </div>
   <div class="field">
