@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :users
   resources :records
   resources :unhealthy_thought_types
   resources :healthy_thought_types
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'records#index'
+  get 'signup' => 'users#new'
+  get 'signin' => 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -38,12 +38,12 @@
   <div class="field">
     <%= f.label :unhealthy_thought_type %><br>
     Which of these usual storylines best fits this situation?<br>
-    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :name, { :prompt => '-- Select --' } %>
+    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' } %>
   </div>
   <div class="field">
     <%= f.label :healthy_thought_type %><br>
     Which healthy thought type is more appropriate for this situation?<br>
-    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :name, { :prompt => '-- Select --' } %>
+    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' } %>
   </div>
   <div class="field">
     <%= f.label :reframe_statement %><br>

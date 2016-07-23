@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Remapping Records</h1>
+<%= link_to 'Sign In', signin_path, class: 'button' %>
 <%= link_to 'New Record', new_record_path %>
 
 <% @records.each do |record| %>
