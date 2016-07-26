@@ -1,10 +1,11 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user_record, only: [:show, :edit, :update]
 
   # GET /records
   # GET /records.json
   def index
-    @records = Record.all
+    @records = Record.where(user_id: current_user.id)
   end
 
   # GET /records/1
@@ -25,6 +26,7 @@ class RecordsController < ApplicationController
   # POST /records.json
   def create
     @record = Record.new(record_params)
+    @record.user_id = current_user.id
 
     respond_to do |format|
       if @record.save
@@ -67,8 +69,14 @@ class RecordsController < ApplicationController
       @record = Record.find(params[:id])
     end
 
+    def correct_user_record
+      unless (current_user_admin?) || (current_user.records.include? @record)
+        redirect_to records_url, notice: "Whoops! That wasn't your record."
+      end #if
+    end #correct_user_record
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:date, :event, :thought_about_event, :feeling_about_thought, :unhealthy_action, :unhealthy_thought_type_id, :healthy_thought_type_id, :reframe_statement, :healthy_action, :star)
+      params.require(:record).permit(:date, :event, :thought_about_event, :feeling_about_thought, :unhealthy_action, :unhealthy_thought_type_id, :healthy_thought_type_id, :reframe_statement, :healthy_action, :star, :user_id)
     end
 end

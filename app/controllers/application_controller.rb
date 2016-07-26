@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
     end #current_user?(user)
     helper_method :current_user?
 
+    def current_user_admin?
+      current_user && current_user.admin?
+    end #current_user_admin?
+    helper_method :current_user_admin?
+
 end

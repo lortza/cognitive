@@ -13,6 +13,7 @@
 <p>
   <strong>Event:</strong> <%= record.event %><br>
   <strong>Reframed to:</strong> <%= record.reframe_statement %><br>
+  <strong>User: <%= record.user_id %></strong></br>
   <%= link_to 'Show', record %> | <%= link_to 'Edit', edit_record_path(record) %> | <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %>
 </p>
 <% end %>

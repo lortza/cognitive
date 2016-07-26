@@ -99,10 +99,10 @@ class UsersController < ApplicationController
   private
 
     def require_admin
-      unless current_user.admin == TRUE
-        redirect_to root_url, notice: "Please sign in as an Admin User first!"
-      end
-    end
+      unless current_user_admin?
+        redirect_to root_url, alert: "Admin Access Only. Please sign in as an Admin user."
+      end #unless
+    end #require_admin
 
     def require_correct_user
       @user = User.find(params[:id])

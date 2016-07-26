@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720002447) do
+ActiveRecord::Schema.define(version: 20160726003852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 20160720002447) do
     t.boolean  "star",                      default: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.integer  "user_id"
   end
 
   add_index "records", ["healthy_thought_type_id"], name: "index_records_on_healthy_thought_type_id", using: :btree
   add_index "records", ["unhealthy_thought_type_id"], name: "index_records_on_unhealthy_thought_type_id", using: :btree
+  add_index "records", ["user_id"], name: "index_records_on_user_id", using: :btree
 
   create_table "unhealthy_thought_types", force: :cascade do |t|
     t.string   "name"
@@ -63,4 +65,5 @@ ActiveRecord::Schema.define(version: 20160720002447) do
 
   add_foreign_key "records", "healthy_thought_types"
   add_foreign_key "records", "unhealthy_thought_types"
+  add_foreign_key "records", "users"
 end
