@@ -10,20 +10,12 @@
   <%= @user.email %>
 </p>
 
+<% if current_user_admin? %>
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
+  <strong>Role:</strong>
+  <%= format_admin(@user.admin) %>
 </p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @user.slug %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
