@@ -4,7 +4,7 @@ class UnhealthyThoughtTypesController < ApplicationController
   # GET /unhealthy_thought_types
   # GET /unhealthy_thought_types.json
   def index
-    @unhealthy_thought_types = UnhealthyThoughtType.all
+    @unhealthy_thought_types = UnhealthyThoughtType.all.order(name: 'asc')
   end
 
   # GET /unhealthy_thought_types/1

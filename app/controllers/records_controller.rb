@@ -5,7 +5,7 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    @records = Record.where(user_id: current_user.id)
+    @records = Record.where(user_id: current_user.id).order(date: 'desc')
   end
 
   # GET /records/1

@@ -4,7 +4,7 @@ class HealthyThoughtTypesController < ApplicationController
   # GET /healthy_thought_types
   # GET /healthy_thought_types.json
   def index
-    @healthy_thought_types = HealthyThoughtType.all
+    @healthy_thought_types = HealthyThoughtType.all.order(name: 'asc')
   end
 
   # GET /healthy_thought_types/1
