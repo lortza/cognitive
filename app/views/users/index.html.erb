@@ -17,7 +17,6 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <%= user.admin %>
         <td><%= format_admin(user.admin) %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
