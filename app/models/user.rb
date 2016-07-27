@@ -6,14 +6,13 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
             format: /\A\S+@\S+\z/,
             uniqueness: { case_sensitive: false }
-  validates :username, presence: true,
-            format: /\A[A-Z0-9]+\z/i,
-            uniqueness: { case_sensitive: false }
+  # validates :username, presence: true,
+            # format: /\A[A-Z0-9]+\z/i,
+            # uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8, allow_blank: true }
 
-  def self.authenticate(email_or_username, password)
-    # user = User.find_by(email: email)
-    user = User.find_by(email: email_or_username) || User.find_by(username: email_or_username)
+  def self.authenticate(email, password)
+    user = User.find_by(email: email)
     user && user.authenticate(password)
   end
 

@@ -28,4 +28,40 @@ UnhealthyThoughtType.create(name: 'Personalization', explanation: "It’s all ab
 UnhealthyThoughtType.create(name: "Inside Out", explanation: "Comparing my insides to others' outsides", example: "I can't even get my life together and I don't even have a full time job or kids")
 UnhealthyThoughtType.create(name: 'Rules Should and Musts', explanation: "This is the only way things can be. Anything else is bad.", example: 'A good mom must make a balanced, home-cooked meal every evening.')
 
-Record.create(date: Date.new(2015, 7, 8), event: "staying in bed this morning because it felt nice", thought_about_event: "i am really lazy and unproductive. i am not nearly as effective as she is.", feeling_about_thought: "guilty and bad about myself", unhealthy_action: "felt crappy about taking time to take care of myself. probably won't indulge in things that make me happy as often.", unhealthy_thought_type_id: 9, healthy_thought_type_id: 5, reframe_statement: "i was being so present and grateful for feeling comfortabletoday that i just wanted to stay with it for a while and feel good before moving on with the day", healthy_action: "recognize that this is actually an area of growth and let myself do things that feel good just for the sake of feeling good", star: 0)
+User.create(name: 'admin', email: 'admin@email.com', admin: true, password: 'password' )
+
+Record.create(date: Date.new(2014, 4, 18),
+  event: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  thought_about_event: "Maecenas auctor tempor ullamcorper. Pellentesque at pellentesque purus.",
+  feeling_about_thought: "Etiam auctor et elit non consectetur",
+  unhealthy_action: "Proin interdum metus a auctor suscipit.",
+  unhealthy_thought_type_id: 9,
+  healthy_thought_type_id: 5,
+  reframe_statement: "Vivamus consequat quam sed suscipit fringilla.",
+  healthy_action: "Morbi rutrum commodo velit eget pulvinar risus cursus vitae pretium congue.",
+  star: 1,
+  user_id: 1)
+
+Record.create(date: Date.new(2015, 7, 8),
+  event: "Duis eget molestie urna, non pellentesque sem",
+  thought_about_event: "Maecenas auctor tempor ullamcorper. Pellentesque at pellentesque purus.",
+  feeling_about_thought: "Etiam auctor et elit non consectetur",
+  unhealthy_action: "Proin interdum metus a auctor suscipit.",
+  unhealthy_thought_type_id: 2,
+  healthy_thought_type_id: 6,
+  reframe_statement: "Vivamus consequat quam sed suscipit fringilla.",
+  healthy_action: "Morbi rutrum commodo velit eget pulvinar risus cursus vitae pretium congue.",
+  star: 0,
+  user_id: 1)
+
+Record.create(date: Date.new(2016, 2, 15),
+  event: "Sed rhoncus ligula sed libero pharetra vulputate",
+  thought_about_event: "Maecenas auctor tempor ullamcorper. Pellentesque at pellentesque purus.",
+  feeling_about_thought: "Etiam auctor et elit non consectetur",
+  unhealthy_action: "Proin interdum metus a auctor suscipit.",
+  unhealthy_thought_type_id: 3,
+  healthy_thought_type_id: 4,
+  reframe_statement: "Vivamus consequat quam sed suscipit fringilla.",
+  healthy_action: "Morbi rutrum commodo velit eget pulvinar risus cursus vitae pretium congue.",
+  star: 0,
+  user_id: 1)
