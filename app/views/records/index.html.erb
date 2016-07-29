@@ -8,7 +8,7 @@
 <h3><%= record.unhealthy_thought_type.name %> <i class="fa fa-arrow-right"></i> <%= record.healthy_thought_type.name %>
   <% if record.star.present? %>
     <sup><i class="fa fa-star"></i></sup>
-  <% end %> 
+  <% end %>
 <span style="font-size: 50%;">(<%= record.date %>)</span></h3>
 <p>
   <strong>Event:</strong> <%= record.event %><br>
@@ -18,6 +18,21 @@
 </p>
 <% end %>
 
+<hr>
+<div style="background-color: beige; width: 30%;">
+  <h3>Most Frequently Expereinced Thought Types</h3>
+  <p>
+  <% if @experienced_unhealthy_thought_types == nil %>
+  sql not working
+  <% else %>
+  <ol>
+    <% @experienced_unhealthy_thought_types.each do |eutt| %>
+    <li><%= eutt.name %></li>
+    <% end %>
+  </ol>
+  <% end %>
+  </p>
+</div>
 
 <hr>
 <table class="table">

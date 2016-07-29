@@ -6,6 +6,7 @@ class RecordsController < ApplicationController
   # GET /records.json
   def index
     @records = Record.where(user_id: current_user.id).order(date: 'desc')
+    # @experienced_unhealthy_thought_types = @records.unhealthy_thought_type_counter
   end
 
   # GET /records/1
