@@ -1,5 +1,170 @@
 <h1>New Record</h1>
 
-<%= render 'form' %>
+<%= form_for(@record) do |f| %>
+  <% if @record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
 
-<%= link_to 'Back', records_path %>
+      <ul>
+      <% @record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div id="step0" >
+  <p class="step1-link"><%= link_to "Show Step 1", "#" %></p>
+</div>
+
+<div id="step1" class="step">
+  <p>Step 1 of 6</p>
+  <%= render 'progressbar' %>
+  <div class="field">
+    <%= f.label :event %>*<br>
+    Describe the event that triggered your feelings.<br>
+    <%= f.text_area :event, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>*<br>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+  <p class="step2-link next-arrow"><%= link_to "Next", "#step2" %></p>
+</div> <!-- event -->
+
+<div id="step2" class="step">
+  <p>Step 2 of 6</p>
+  <%= render 'progressbar' %>
+  <div class="field">
+    <%= f.label :thought_about_event %>*<br>
+    What did you think about this event?</br>
+    <%= f.text_area :thought_about_event, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :unhealthy_thought_type %>*<br>
+    Which of these thought types does that sound like?<br>
+    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
+  </div>
+  <div class="back-arrow">
+    <p class="step1-link back-arrow"><%= link_to "Back", "#step1" %></p>
+  </div> <!-- back-arrow -->
+
+  <div class="next-arrow">
+     <p class="step3-link"><%= link_to "Next", "#step3" %></p>
+  </div> <!-- next-arrow -->
+</div>
+
+<div id="step3" class="step">
+  <p>Step 3 of 6</p>
+  <%= render 'progressbar' %>
+  <div class="field">
+    <%= f.label :feeling_about_thought %>*<br>
+    What feelings were triggered by that thought?<br>
+    <%= f.text_area :feeling_about_thought, class: "form-control" %>
+  </div>
+  <p class="step2-link"><%= link_to "Back", "#step2" %></p>
+  <p class="step4-link"><%= link_to "Next", "#step4" %></p>
+</div>
+
+<div id="step4" class="step">
+  <p>Step 4 of 6</p>
+  <%= render 'progressbar' %>
+  <div class="field">
+    <%= f.label :unhealthy_action %>*<br>
+    What actions did these feelings inspire you to take?<br>
+    <%= f.text_area :unhealthy_action, class: "form-control" %>
+  </div>
+  <p class="step3-link"><%= link_to "Back", "#step3" %></p>
+  <p class="step5-link"><%= link_to "Next", "#step5" %></p>
+</div>
+
+<div id="step5" class="step">
+  <p>Step 5 of 6</p>
+  <%= render 'progressbar' %>
+  <div class="field">
+    <%= f.label :healthy_thought_type %>*<br>
+    Which healthy thought type is more appropriate for this situation?<br>
+    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :reframe_statement %>*<br>
+    With your healthy thought type in mind, write a more accurate statement describing the situation.<br>
+    <%= f.text_area :reframe_statement, class: "form-control" %>
+  </div>
+  <p class="step4-link back-arrow"><%= link_to "Back", "#step4" %></p>
+  <p class="step6-link"><%= link_to "Next", "#step6" %></p>
+</div>
+
+<div id="step6" class="step">
+  <p>Step 6 of 6</p>
+  <%= render 'progressbar' %>
+  <div class="field">
+    <%= f.label :healthy_action %>*<br>
+    What actions does this new statement inspire you to make?<br>
+    <%= f.text_area :healthy_action, class: "form-control" %>
+  </div>
+  <p class="step5-link"><%= link_to "Back", "#step5" %></p>
+  <div class="actions">
+    <%= f.submit "Finish & Save" %>
+  </div>
+</div>
+
+<% end %>
+
+
+<%= link_to 'Cancel', records_path %>
+
+
+<script type="text/javascript">
+  jQuery(function() {
+
+    jQuery('p.step1-link').click(function(event){
+      event.preventDefault();
+      jQuery('#step0').css("display", "none");
+      jQuery('#step1').css("display", "block");
+      jQuery('.progressbar').css("display", "block");
+      jQuery('#step2').css("display", "none");
+    });
+
+    jQuery('p.step2-link').click(function(event){
+      event.preventDefault();
+      jQuery('#step1').css("display", "none");
+      jQuery('#step2').css("display", "block");
+      jQuery('.progress-block').css("width", "25%");
+      jQuery('#step3').css("display", "none");
+    });
+
+    jQuery('p.step3-link').click(function(event){
+      event.preventDefault();
+      jQuery('#step2').css("display", "none");
+      jQuery('#step3').css("display", "block");
+      jQuery('.progress-block').css("width", "45%");
+      jQuery('#step4').css("display", "none");
+    });
+
+    jQuery('p.step4-link').click(function(event){
+      event.preventDefault();
+      jQuery('#step3').css("display", "none");
+      jQuery('#step4').css("display", "block");
+      jQuery('.progress-block').css("width", "65%");
+      jQuery('#step5').css("display", "none");
+    });
+
+    jQuery('p.step5-link').click(function(event){
+      event.preventDefault();
+      jQuery('#step4').css("display", "none");
+      jQuery('#step5').css("display", "block");
+      jQuery('.progress-block').css("width", "85%");
+      jQuery('#step6').css("display", "none");
+    });
+
+    jQuery('p.step6-link').click(function(event){
+      event.preventDefault();
+      jQuery('#step5').css("display", "none");
+      jQuery('#step6').css("display", "block");
+      jQuery('.progress-block').css("width", "99%");
+    });
+  });
+</script>

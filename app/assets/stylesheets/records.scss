@@ -1,3 +1,41 @@
 // Place all the styles related to the Records controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.step {
+  clear: both;
+  border: 1px solid black;
+  padding: 5%;
+  background-color: white;
+  display: none;
+}
+
+.progressbar {
+  display: none;
+  border: 1px solid lightgreen;
+  border-radius: 5px;
+  height: 15px;
+  margin-bottom: 20px;
+  .progress-block {
+    width: 5%;
+    height: 14px;
+    float: left;
+    background-color: lightgreen;
+    border-radius: 4px 0px 0px 4px;
+  } /* .progress-block */
+
+} /* .progressbar */
+
+.next-arrow {
+  float: right;
+  height: 100%;
+  background-color: yellow;
+} /* .next-arrow */
+
+.back-arrow {
+  float: left;
+  height: 100%;
+  background-color: yellow;
+} /* .back-arrow */
+
+

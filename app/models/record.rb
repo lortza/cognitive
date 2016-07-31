@@ -3,6 +3,9 @@ class Record < ActiveRecord::Base
   belongs_to :healthy_thought_type
   belongs_to :user
 
+  validates :date, :event, :thought_about_event, :feeling_about_thought, :unhealthy_action, :unhealthy_thought_type_id, :healthy_thought_type_id, :reframe_statement, :healthy_action, presence: true
+
+
   #method to list top five most used negative thought types and get their name and  provide a usage count
   def self.unhealthy_thought_type_counter
      # used_unhealthy_thought_types_query = "SELECT unhealthy_thought_types.name AS unhealthy_thought, COUNT(*) FROM records r, LEFT JOIN unhealthy_thought_types u ON unhealthy_thought_types.id = records.unhealthy_thought_type_id GROUP BY unhealthy_thought LIMIT '5'"
