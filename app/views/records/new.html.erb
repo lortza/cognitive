@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-<div id="step0" >
+<div id="step0" class="button">
   <p class="step1-link"><%= link_to "Show Step 1", "#" %></p>
 </div>
 
@@ -30,8 +30,12 @@
     <%= f.label :date %>*<br>
     <%= f.date_field :date, class: "form-control" %>
   </div>
-  <p class="step2-link next-arrow"><%= link_to "Next", "#step2" %></p>
-</div> <!-- event -->
+  <div class="bottom-buttons">
+    <p class="button back"><%= link_to "Cancel", records_path %></p>
+    <p class="step2-link button next"><%= link_to "Next", "#step2" %></p>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div> <!-- step1 -->
 
 <div id="step2" class="step">
   <p>Step 2 of 6</p>
@@ -47,14 +51,12 @@
     Which of these thought types does that sound like?<br>
     <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
   </div>
-  <div class="back-arrow">
-    <p class="step1-link back-arrow"><%= link_to "Back", "#step1" %></p>
-  </div> <!-- back-arrow -->
-
-  <div class="next-arrow">
-     <p class="step3-link"><%= link_to "Next", "#step3" %></p>
-  </div> <!-- next-arrow -->
-</div>
+  <div class="bottom-buttons">
+    <p class="step1-link button back"><%= link_to "Back", "#step1" %></p>
+    <p class="step3-link button next"><%= link_to "Next", "#step3" %></p>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div><!-- step2 -->
 
 <div id="step3" class="step">
   <p>Step 3 of 6</p>
@@ -64,9 +66,12 @@
     What feelings were triggered by that thought?<br>
     <%= f.text_area :feeling_about_thought, class: "form-control" %>
   </div>
-  <p class="step2-link"><%= link_to "Back", "#step2" %></p>
-  <p class="step4-link"><%= link_to "Next", "#step4" %></p>
-</div>
+  <div class="bottom-buttons">
+    <p class="step2-link button back"><%= link_to "Back", "#step2" %></p>
+    <p class="step4-link button next"><%= link_to "Next", "#step4" %></p>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div><!-- step3 -->
 
 <div id="step4" class="step">
   <p>Step 4 of 6</p>
@@ -76,9 +81,12 @@
     What actions did these feelings inspire you to take?<br>
     <%= f.text_area :unhealthy_action, class: "form-control" %>
   </div>
-  <p class="step3-link"><%= link_to "Back", "#step3" %></p>
-  <p class="step5-link"><%= link_to "Next", "#step5" %></p>
-</div>
+  <div class="bottom-buttons">
+    <p class="step3-link button back"><%= link_to "Back", "#step3" %></p>
+    <p class="step5-link button next"><%= link_to "Next", "#step5" %></p>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div><!-- step4 -->
 
 <div id="step5" class="step">
   <p>Step 5 of 6</p>
@@ -93,9 +101,12 @@
     With your healthy thought type in mind, write a more accurate statement describing the situation.<br>
     <%= f.text_area :reframe_statement, class: "form-control" %>
   </div>
-  <p class="step4-link back-arrow"><%= link_to "Back", "#step4" %></p>
-  <p class="step6-link"><%= link_to "Next", "#step6" %></p>
-</div>
+  <div class="bottom-buttons">
+    <p class="step4-link button back"><%= link_to "Back", "#step4" %></p>
+    <p class="step6-link button next"><%= link_to "Next", "#step6" %></p>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div><!-- step5 -->
 
 <div id="step6" class="step">
   <p>Step 6 of 6</p>
@@ -105,17 +116,17 @@
     What actions does this new statement inspire you to make?<br>
     <%= f.text_area :healthy_action, class: "form-control" %>
   </div>
-  <p class="step5-link"><%= link_to "Back", "#step5" %></p>
-  <div class="actions">
-    <%= f.submit "Finish & Save" %>
-  </div>
-</div>
+  <div class="bottom-buttons">
+    <p class="step5-link button back"><%= link_to "Back", "#step5" %></p>
+    <p class="actions"><%= f.submit "Finish & Save", :class=> "button" %></p>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div><!-- step6 -->
 
 <% end %>
 
 
-<%= link_to 'Cancel', records_path %>
-
+<div class="button back"><%= link_to "Cancel", records_path %></div>
 
 <script type="text/javascript">
   jQuery(function() {
