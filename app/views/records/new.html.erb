@@ -23,7 +23,7 @@
   <div class="field">
     <%= f.label :event %>*<br>
     Describe the event that triggered your feelings.<br>
-    <%= f.text_area :event, class: "form-control" %>
+    <%= f.text_area :event, class: "form-control", required: true %>
   </div>
 
   <div class="field">
@@ -127,55 +127,3 @@
 
 
 <div class="button back"><%= link_to "Cancel", records_path %></div>
-
-<script type="text/javascript">
-  jQuery(function() {
-
-    jQuery('p.step1-link').click(function(event){
-      event.preventDefault();
-      jQuery('#step0').css("display", "none");
-      jQuery('#step1').css("display", "block");
-      jQuery('.progressbar').css("display", "block");
-      jQuery('#step2').css("display", "none");
-    });
-
-    jQuery('p.step2-link').click(function(event){
-      event.preventDefault();
-      jQuery('#step1').css("display", "none");
-      jQuery('#step2').css("display", "block");
-      jQuery('.progress-block').css("width", "25%");
-      jQuery('#step3').css("display", "none");
-    });
-
-    jQuery('p.step3-link').click(function(event){
-      event.preventDefault();
-      jQuery('#step2').css("display", "none");
-      jQuery('#step3').css("display", "block");
-      jQuery('.progress-block').css("width", "45%");
-      jQuery('#step4').css("display", "none");
-    });
-
-    jQuery('p.step4-link').click(function(event){
-      event.preventDefault();
-      jQuery('#step3').css("display", "none");
-      jQuery('#step4').css("display", "block");
-      jQuery('.progress-block').css("width", "65%");
-      jQuery('#step5').css("display", "none");
-    });
-
-    jQuery('p.step5-link').click(function(event){
-      event.preventDefault();
-      jQuery('#step4').css("display", "none");
-      jQuery('#step5').css("display", "block");
-      jQuery('.progress-block').css("width", "85%");
-      jQuery('#step6').css("display", "none");
-    });
-
-    jQuery('p.step6-link').click(function(event){
-      event.preventDefault();
-      jQuery('#step5').css("display", "none");
-      jQuery('#step6').css("display", "block");
-      jQuery('.progress-block').css("width", "99%");
-    });
-  });
-</script>

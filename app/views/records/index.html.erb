@@ -1,22 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Remapping Records</h1>
-<%= link_to 'Sign In', signin_path, class: 'button' %>
-<%= link_to 'New Record', new_record_path %>
+<div class="welcome">
+   <h1>Welcome back <%= @current_user.name %></h1>
+   <div class="bottom-buttons">
+    <div class="button"><%= link_to 'New Record', new_record_path %></div>
+    <div style="clear:both"></div>
+  </div> <!-- bottom-buttons -->
+</div> <!-- welcome -->
 
 <% @records.each do |record| %>
-<h3><%= record.unhealthy_thought_type.name %> <i class="fa fa-arrow-right"></i> <%= record.healthy_thought_type.name %>
-  <% if record.star.present? %>
-    <sup><i class="fa fa-star"></i></sup>
-  <% end %>
-<span style="font-size: 50%;">(<%= record.date %>)</span></h3>
-<p>
-  <strong>Event:</strong> <%= record.event %><br>
-  <strong>Reframed to:</strong> <%= record.reframe_statement %><br>
-  <strong>User: <%= record.user_id %></strong></br>
-  <%= link_to 'Show', record %> | <%= link_to 'Edit', edit_record_path(record) %> | <%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+<article class="index">
+  <div class="box-link">
+  <%= link_to image_tag("link.png"), record %>
+  </div>
+  <h1><%= record.unhealthy_thought_type.name %> <i class="fa fa-arrow-right"></i> <%= record.healthy_thought_type.name %>
+    <% if record.star.present? %>
+      <sup><i class="fa fa-star"></i></sup>
+    <% end %>
+  </h1>
+  <p>
+    <strong>From:</strong> <%= record.event %><br>
+    <strong>To:</strong> <%= record.reframe_statement %><br>
+    <span class="timestamp"><%= time_ago_in_words(record.date) %> ago</span></br>
+  </p>
+</article>
 <% end %>
+
 
 <hr>
 <div style="background-color: beige; width: 30%;">
@@ -33,38 +42,3 @@
   <% end %>
   </p>
 </div>
-
-<hr>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Event</th>
-      <th>Unhealthy Thought Type</th>
-      <th>Healthy Thought Type</th>
-      <th>Reframe statement</th>
-      <th>Star</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @records.each do |record| %>
-      <tr>
-        <td><%= record.date %></td>
-        <td><%= record.event %></td>
-        <td><%= record.unhealthy_thought_type.name %></td>
-        <td><%= record.healthy_thought_type.name %></td>
-        <td><%= record.reframe_statement %></td>
-        <td>
-          <% if record.star.present? %>
-            <i class="fa fa-star"></i>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', record %></td>
-        <td><%= link_to 'Edit', edit_record_path(record) %></td>
-        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

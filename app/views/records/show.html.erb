@@ -1,56 +1,41 @@
-<p id="notice"><%= notice %></p>
-<h1>Remapping Record Details -- USER: <%= @record.user.name %></h1>
-<h2><%= truncate(@record.event, length: 50) %></h2>
+<article class="show">
 
-<p>
-  <strong>Date:</strong>
-  <%= @record.date %>
-</p>
+  <p id="notice"><%= notice %></p>
+  <p>Remapping Record Details -- USER: <%= @record.user.name %></p>
+  <h1><%= @record.unhealthy_thought_type.name %> <i class="fa fa-arrow-right"></i> <%= @record.healthy_thought_type.name %>
+    <% if @record.star.present? %>
+      <sup><i class="fa fa-star"></i></sup>
+    <% end %>
+  </h1>
 
-<p>
-  <strong>Event:</strong>
-  <%= @record.event %>
-</p>
+  <p><%= @record.date %></p>
 
-<p>
-  <strong>Thought about event:</strong>
-  <%= @record.thought_about_event %>
-</p>
+  <h2>Trigger Event:</h2>
+  <p><%= @record.event %></p>
 
-<p>
-  <strong>Feeling about thought:</strong>
-  <%= @record.feeling_about_thought %>
-</p>
+  <h2>Thought About the Event:</h2>
+  <p><%= @record.thought_about_event %></p>
 
-<p>
-  <strong>Unhealthy action:</strong>
-  <%= @record.unhealthy_action %>
-</p>
+    <h2>Feeling about thought:</h2>
+    <p><%= @record.feeling_about_thought %></p>
 
-<p>
-  <strong>Unhealthy thought type:</strong>
-  <%= @record.unhealthy_thought_type.name %> (<%= @record.unhealthy_thought_type.explanation %>)
-</p>
+    <h2>Unhealthy action:</h2>
+    <p><%= @record.unhealthy_action %></p>
 
-<p>
-  <strong>Healthy thought type:</strong>
-  <%= @record.healthy_thought_type.name %> (<%= @record.healthy_thought_type.explanation %>)
-</p>
+    <h2>Unhealthy thought type:</h2>
+    <p><%= @record.unhealthy_thought_type.name %> (<%= @record.unhealthy_thought_type.explanation %>)</p>
 
-<p>
-  <strong>Reframe statement:</strong>
-  <%= @record.reframe_statement %>
-</p>
+    <h2>Healthy Thought Type:</h2>
+    <p><%= @record.healthy_thought_type.name %> (<%= @record.healthy_thought_type.explanation %>)</p>
 
-<p>
-  <strong>Healthy action:</strong>
-  <%= @record.healthy_action %>
-</p>
+    <h2>Reframe Statement:</h2>
+    <p><%= @record.reframe_statement %></p>
 
-<p>
-  <strong>Star:</strong>
-  <%= @record.star %>
-</p>
+    <h2>Healthy action:</h2>
+    <p><%= @record.healthy_action %></p>
+
+</article>
 
 <%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Destroy', @record, method: :delete, data: { confirm: 'Are you sure you want to delete this record? This cannot be undone.' } %> |
 <%= link_to 'Back', records_path %>
