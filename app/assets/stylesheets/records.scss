@@ -1,7 +1,7 @@
-// Place all the styles related to the Records controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+@import "fonts";
 
+// NEW RECORDS
 .step {
   clear: both;
   border: 1px solid black;
@@ -29,7 +29,65 @@
   margin: 10px 0px;
 } /* .bottom-buttons */
 
+// RECORDS INDEX
+.welcome {
+  text-align: center;
+  background-color: white;
+  border-bottom: 20px solid darken($text, 10%);
+  // margin-bottom: 10px;
+} /* .welcome */
 
+article.index {
+  &:hover {
+    background-color: darken($beige, 3%);
+  }/* article hover */
+  &:active {
+    background-color: darken($beige, 5%);
+  } /* article active */
+  position: relative;
+  background-color: $beige;
+  border-top: 1px solid $dark-beige;
+  border-bottom: 1px solid $dark-beige;
+  color: $text;
+  font-family: $body-family;
+  padding: 2% 5%;
+  z-index: 0;
+  h1 {
+    font-size: 12pt;
+    font-family: $headings-family;
+  }
+  .timestamp {
+    font-family: $emphasis-family;
+    font-size: .5ems;
+    text-transform: uppercase;
+  }
+  .box-link {
+    img {
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+} /* article.index */
+
+// RECORD SHOW
+ article.show {
+  background-color: white;
+  border-top: 1px solid $dark-beige;
+  border-bottom: 1px solid $dark-beige;
+  color: $text;
+  font-family: $body-family;
+  padding: 2% 5%;
+  h2 {
+    font-family: $headings-family;
+    font-size: 15px;
+    border-bottom: 1px solid $dark-beige;
+  } /* h2 */
+    
+ } /* article.show */
 
 
 

@@ -1,9 +1,10 @@
 @import "colors";
+@import "fonts";
 
 .button {
   a {
     color: $light-blue;
-    border: 1px solid $dark-blue;
+    border: 1px solid $green;
     padding: 5px 10px;
     border-radius: 5px;
 
@@ -13,7 +14,7 @@
 
     &:hover {
       color: $light-blue;
-      background-color: darken($dark-blue, 10%);
+      background-color: darken($green, 10%);
       text-decoration: none;
     }
   } /* a */

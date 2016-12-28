@@ -1,3 +1,11 @@
+@import "colors";
+@import "fonts";
+
+.body {
+  background: image-url("grey_wash_wall") center center fixed;
+  background-color: $dark-beige;
+}
+
 .wrapper {
   width: 400px;
   border: 1px solid pink;
