@@ -1,7 +1,4 @@
-// $(document).on('page:load', function() {
-// $(document).ready(function() {
 document.addEventListener("turbolinks:change", function() {
-
 
   $('p.step1-link').click(function(event){
     event.preventDefault();
@@ -49,5 +46,5 @@ document.addEventListener("turbolinks:change", function() {
     $('#step6').css("display", "block");
     $('.progress-block').css("width", "99%");
   });
-});
-// });
+
+}); // close turbolinks workaround
