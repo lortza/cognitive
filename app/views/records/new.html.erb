@@ -1,129 +1,119 @@
 <h1>New Record</h1>
 
 <%= form_for(@record) do |f| %>
-  <% if @record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+  <%= render 'shared/errors', object: @record %>
 
-      <ul>
-      <% @record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div id="step0" class="button">
+    <p class="step1-link"><%= link_to "Show Step 1", "#" %></p>
+  </div>
+
+  <div id="step1" class="step">
+    <p>Step 1 of 6</p>
+    <%= render 'progressbar' %>
+    <div class="field">
+      <%= f.label :event %>*<br>
+      Describe the event that triggered your feelings.<br>
+      <%= f.text_area :event, class: "form-control", required: true %>
     </div>
-  <% end %>
 
-<div id="step0" class="button">
-  <p class="step1-link"><%= link_to "Show Step 1", "#" %></p>
-</div>
+    <div class="field">
+      <%= f.label :date %>*<br>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
+    <div class="bottom-buttons">
+      <p class="button back"><%= link_to "Cancel", records_path %></p>
+      <p class="step2-link button next"><%= link_to "Next", "#step2" %></p>
+      <div style="clear:both"></div>
+    </div> <!-- bottom-buttons -->
+  </div> <!-- step1 -->
 
-<div id="step1" class="step">
-  <p>Step 1 of 6</p>
-  <%= render 'progressbar' %>
-  <div class="field">
-    <%= f.label :event %>*<br>
-    Describe the event that triggered your feelings.<br>
-    <%= f.text_area :event, class: "form-control", required: true %>
-  </div>
+  <div id="step2" class="step">
+    <p>Step 2 of 6</p>
+    <%= render 'progressbar' %>
+    <div class="field">
+      <%= f.label :thought_about_event %>*<br>
+      What did you think about this event?</br>
+      <%= f.text_area :thought_about_event, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :date %>*<br>
-    <%= f.date_field :date, class: "form-control" %>
-  </div>
-  <div class="bottom-buttons">
-    <p class="button back"><%= link_to "Cancel", records_path %></p>
-    <p class="step2-link button next"><%= link_to "Next", "#step2" %></p>
-    <div style="clear:both"></div>
-  </div> <!-- bottom-buttons -->
-</div> <!-- step1 -->
+    <div class="field">
+      <%= f.label :unhealthy_thought_type %>*<br>
+      Which of these thought types does that sound like?<br>
+      <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
+    </div>
+    <div class="bottom-buttons">
+      <p class="step1-link button back"><%= link_to "Back", "#step1" %></p>
+      <p class="step3-link button next"><%= link_to "Next", "#step3" %></p>
+      <div style="clear:both"></div>
+    </div> <!-- bottom-buttons -->
+  </div><!-- step2 -->
 
-<div id="step2" class="step">
-  <p>Step 2 of 6</p>
-  <%= render 'progressbar' %>
-  <div class="field">
-    <%= f.label :thought_about_event %>*<br>
-    What did you think about this event?</br>
-    <%= f.text_area :thought_about_event, class: "form-control" %>
-  </div>
+  <div id="step3" class="step">
+    <p>Step 3 of 6</p>
+    <%= render 'progressbar' %>
+    <div class="field">
+      <%= f.label :feeling_about_thought %>*<br>
+      What feelings were triggered by that thought?<br>
+      <%= f.text_area :feeling_about_thought, class: "form-control" %>
+    </div>
+    <div class="bottom-buttons">
+      <p class="step2-link button back"><%= link_to "Back", "#step2" %></p>
+      <p class="step4-link button next"><%= link_to "Next", "#step4" %></p>
+      <div style="clear:both"></div>
+    </div> <!-- bottom-buttons -->
+  </div><!-- step3 -->
 
-  <div class="field">
-    <%= f.label :unhealthy_thought_type %>*<br>
-    Which of these thought types does that sound like?<br>
-    <%= f.collection_select :unhealthy_thought_type_id, UnhealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
-  </div>
-  <div class="bottom-buttons">
-    <p class="step1-link button back"><%= link_to "Back", "#step1" %></p>
-    <p class="step3-link button next"><%= link_to "Next", "#step3" %></p>
-    <div style="clear:both"></div>
-  </div> <!-- bottom-buttons -->
-</div><!-- step2 -->
+  <div id="step4" class="step">
+    <p>Step 4 of 6</p>
+    <%= render 'progressbar' %>
+    <div class="field">
+      <%= f.label :unhealthy_action %>*<br>
+      What actions did these feelings inspire you to take?<br>
+      <%= f.text_area :unhealthy_action, class: "form-control" %>
+    </div>
+    <div class="bottom-buttons">
+      <p class="step3-link button back"><%= link_to "Back", "#step3" %></p>
+      <p class="step5-link button next"><%= link_to "Next", "#step5" %></p>
+      <div style="clear:both"></div>
+    </div> <!-- bottom-buttons -->
+  </div><!-- step4 -->
 
-<div id="step3" class="step">
-  <p>Step 3 of 6</p>
-  <%= render 'progressbar' %>
-  <div class="field">
-    <%= f.label :feeling_about_thought %>*<br>
-    What feelings were triggered by that thought?<br>
-    <%= f.text_area :feeling_about_thought, class: "form-control" %>
-  </div>
-  <div class="bottom-buttons">
-    <p class="step2-link button back"><%= link_to "Back", "#step2" %></p>
-    <p class="step4-link button next"><%= link_to "Next", "#step4" %></p>
-    <div style="clear:both"></div>
-  </div> <!-- bottom-buttons -->
-</div><!-- step3 -->
+  <div id="step5" class="step">
+    <p>Step 5 of 6</p>
+    <%= render 'progressbar' %>
+    <div class="field">
+      <%= f.label :healthy_thought_type %>*<br>
+      Which healthy thought type is more appropriate for this situation?<br>
+      <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :reframe_statement %>*<br>
+      With your healthy thought type in mind, write a more accurate statement describing the situation.<br>
+      <%= f.text_area :reframe_statement, class: "form-control" %>
+    </div>
+    <div class="bottom-buttons">
+      <p class="step4-link button back"><%= link_to "Back", "#step4" %></p>
+      <p class="step6-link button next"><%= link_to "Next", "#step6" %></p>
+      <div style="clear:both"></div>
+    </div> <!-- bottom-buttons -->
+  </div><!-- step5 -->
 
-<div id="step4" class="step">
-  <p>Step 4 of 6</p>
-  <%= render 'progressbar' %>
-  <div class="field">
-    <%= f.label :unhealthy_action %>*<br>
-    What actions did these feelings inspire you to take?<br>
-    <%= f.text_area :unhealthy_action, class: "form-control" %>
-  </div>
-  <div class="bottom-buttons">
-    <p class="step3-link button back"><%= link_to "Back", "#step3" %></p>
-    <p class="step5-link button next"><%= link_to "Next", "#step5" %></p>
-    <div style="clear:both"></div>
-  </div> <!-- bottom-buttons -->
-</div><!-- step4 -->
+  <div id="step6" class="step">
+    <p>Step 6 of 6</p>
+    <%= render 'progressbar' %>
+    <div class="field">
+      <%= f.label :healthy_action %>*<br>
+      What actions does this new statement inspire you to make?<br>
+      <%= f.text_area :healthy_action, class: "form-control" %>
+    </div>
+    <div class="bottom-buttons">
+      <p class="step5-link button back"><%= link_to "Back", "#step5" %></p>
+      <p class="actions"><%= f.submit "Finish & Save", :class=> "button" %></p>
+      <div style="clear:both"></div>
+    </div> <!-- bottom-buttons -->
+  </div><!-- step6 -->
 
-<div id="step5" class="step">
-  <p>Step 5 of 6</p>
-  <%= render 'progressbar' %>
-  <div class="field">
-    <%= f.label :healthy_thought_type %>*<br>
-    Which healthy thought type is more appropriate for this situation?<br>
-    <%= f.collection_select :healthy_thought_type_id, HealthyThoughtType.all, :id, :thought_type_dropdown_display_name, { :prompt => '-- Select --' }, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :reframe_statement %>*<br>
-    With your healthy thought type in mind, write a more accurate statement describing the situation.<br>
-    <%= f.text_area :reframe_statement, class: "form-control" %>
-  </div>
-  <div class="bottom-buttons">
-    <p class="step4-link button back"><%= link_to "Back", "#step4" %></p>
-    <p class="step6-link button next"><%= link_to "Next", "#step6" %></p>
-    <div style="clear:both"></div>
-  </div> <!-- bottom-buttons -->
-</div><!-- step5 -->
-
-<div id="step6" class="step">
-  <p>Step 6 of 6</p>
-  <%= render 'progressbar' %>
-  <div class="field">
-    <%= f.label :healthy_action %>*<br>
-    What actions does this new statement inspire you to make?<br>
-    <%= f.text_area :healthy_action, class: "form-control" %>
-  </div>
-  <div class="bottom-buttons">
-    <p class="step5-link button back"><%= link_to "Back", "#step5" %></p>
-    <p class="actions"><%= f.submit "Finish & Save", :class=> "button" %></p>
-    <div style="clear:both"></div>
-  </div> <!-- bottom-buttons -->
-</div><!-- step6 -->
-
-<% end %>
+<% end %><!-- end form for -->
 
 
 <div class="button back"><%= link_to "Cancel", records_path %></div>
