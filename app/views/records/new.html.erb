@@ -3,11 +3,7 @@
 <%= form_for(@record) do |f| %>
   <%= render 'shared/errors', object: @record %>
 
-  <div id="step0" class="button">
-    <p class="step1-link"><%= link_to "Show Step 1", "#" %></p>
-  </div>
-
-  <div id="step1" class="step">
+  <div id="step1">
     <p>Step 1 of 6</p>
     <%= render 'progressbar' %>
     <div class="field">
