@@ -2,12 +2,21 @@
 @import "fonts";
 
 // NEW RECORDS
-.step {
+@mixin steps {
   clear: both;
   border: 1px solid black;
   padding: 5%;
   background-color: white;
+}
+
+.step {
+  @include steps;
   display: none;
+}
+
+#step1 {
+  @include steps;
+  display: block;
 }
 
 .progressbar {
@@ -86,7 +95,7 @@ article.index {
     font-size: 15px;
     border-bottom: 1px solid $dark-beige;
   } /* h2 */
-    
+
  } /* article.show */
 
 
